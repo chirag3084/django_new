@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>view_transcation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      /* This is key for clean borders */
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    .main {
+      padding: 20px;
+      padding-left: 33vw;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="view transcation" class="form"> View transcations and a summary within a data
+      range</label><br><br>
+    <label for="start-date" class="form">Enter the start date (dd-mm-yyyy):</label><br>
+    <input type="date" name="start"><br><br>
+
+    <label for="end-date" class="form">Enter the end date (dd-mm-yyyy):</label><br>
+    <input type="date" name="end"><br><br>
+
+    <input type="submit" style="margin-left:50px;" name="search">
+    <div style="border:2px;">
+    </div>
+    <div class="main">
+      </form>
+      <table>
+
+        <tr>
+          <th><b>id</th></b>
+          <th><b>date_t</th></b>
+          <th><b>amount_t</th></b>
+          <th><b>category_t</th></b>
+          <th><b>description_t</th></b>
+        </tr>
+        {% for t in data %}
+        <td>{{t.id}}</td>
+        <td>{{t.date_t}}</td>
+        <td>{{t.amount_t}}</td>
+        <td>{{t.category_t}}</td>
+        <td>{{t.description_t}}</td>
+        </tr>
+        {% endfor %}
+    </div>
+    </table>
+</body>
+
+</html>

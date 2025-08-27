@@ -13,7 +13,6 @@ class CustomUser(AbstractUser):
     user_profile_image = models.ImageField(upload_to="profile")
 
     USERNAME_FIELD = "phone_number"
-    password
     REQUIRED_FIELDS = [] 
     objects = UserManager()
     
